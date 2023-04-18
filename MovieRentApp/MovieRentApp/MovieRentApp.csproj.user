@@ -7,7 +7,27 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="MVVM\Views\ClientView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\Views\MovieView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\Views\ClientView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\Views\MovieView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\CloseButtonTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\MenuButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

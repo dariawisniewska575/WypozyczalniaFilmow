@@ -1,8 +1,23 @@
 ﻿<Application x:Class="MovieRentApp.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:MovieRentApp">
+             xmlns:local="clr-namespace:MovieRentApp"
+             xmlns:viewModels="clr-namespace:MovieRentApp.MVVM.ViewModels"
+             xmlns:views="clr-namespace:MovieRentApp.MVVM.Views">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="Themes/CloseButtonTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModels:MovieViewModel}">
+                <views:MovieView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModels:ClientViewModel}">
+                <views:ClientView/>
+            </DataTemplate>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
