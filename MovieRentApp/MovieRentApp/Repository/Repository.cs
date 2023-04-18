@@ -16,10 +16,17 @@ public class Repository : IRepository
         _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
     }
 
+    public async Task<Movie> AddMovieAsync(Movie newMovie)
+    {
+        await _dbContext.Movies.AddAsync(newMovie);
+        await _dbContext.SaveChangesAsync();
+        return newMovie;
+    }
+
     public async Task<IEnumerable<Movie>> GetMoviesAsync()
         => await _dbContext.Movies.ToListAsync();
 
-    public async Task RemoveMovie(int movieId)
+    public async Task RemoveMovieAsync(int movieId)
     {
         var movie = await _dbContext.Movies.FirstOrDefaultAsync(m => m.Id == movieId);
         if (movie is null) return;

@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Modals\MovieFormModal.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MVVM\Views\ClientView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -18,6 +21,9 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Modals\MovieFormModal.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MVVM\Views\ClientView.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -27,7 +33,16 @@
     <Page Update="Themes\CloseButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Themes\ComboBoxTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\DisabledButtonTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Themes\MenuButtonTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\TextBoxTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

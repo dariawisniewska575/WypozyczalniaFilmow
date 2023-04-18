@@ -38,32 +38,19 @@
                   BorderThickness="0" 
                   BorderBrush="Transparent"
                   RowHeight="60"
+                  Margin="20,0,0,0"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
                     <Setter Property="Background" Value="Transparent" />
                     <Setter Property="Margin" Value="0,0,0,10" />
                     <Style.Triggers>
-                        <EventTrigger RoutedEvent="MouseEnter">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation 
-                            Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" 
-                            To="#333333" 
-                            Duration="0:0:1.5" />
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                        <EventTrigger RoutedEvent="MouseLeave">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation 
-                            Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" 
-                            To="Transparent" 
-                            Duration="0:0:0.5" />
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#333333"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#333333"/>
+                        </Trigger>
                     </Style.Triggers>
                 </Style>
             </DataGrid.RowStyle>
@@ -103,15 +90,43 @@
         <Button Content="Usuń" 
                 Grid.Row="1" 
                 Click="DeleteButton_Click"
-                IsEnabled="true"
-                Background="#63C957" 
-                Foreground="White"
+                Background="#FF3333"
                 Padding="10"
-                Margin="0,0,10,10"
+                Margin="0,0,30,8"
                 Width="100"
-                HorizontalAlignment="Left" 
+                HorizontalAlignment="Right" 
                 VerticalAlignment="Bottom"
-                BorderBrush="Transparent">
+                BorderBrush="Transparent"
+                IsEnabled="{Binding IsEditOrDeleteButtonEnabled}"
+                Style="{StaticResource DisabledButtonTheme}">
         </Button>
+
+        <Button Content="Edytuj" 
+                Grid.Row="1" 
+                Click="EditButton_Click"
+                Background="#CC0000"
+                Padding="10"
+                Margin="0,0,150,8"
+                Width="100"
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Bottom"
+                BorderBrush="Transparent"
+                IsEnabled="{Binding IsEditOrDeleteButtonEnabled}"
+                Style="{StaticResource DisabledButtonTheme}">
+        </Button>
+
+        <Button Content="Dodaj" 
+                Grid.Row="1" 
+                Click="AddButton_Click"
+                Background="#339900"
+                Padding="10"
+                Margin="0,0,270,8"
+                Width="100"
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Bottom"
+                BorderBrush="Transparent"
+                Style="{StaticResource DisabledButtonTheme}">
+        </Button>
+
     </Grid>
 </UserControl>

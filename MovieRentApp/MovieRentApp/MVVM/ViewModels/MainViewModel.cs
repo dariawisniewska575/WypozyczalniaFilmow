@@ -1,8 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using MovieRentApp.Core;
+﻿using MovieRentApp.Core;
 using MovieRentApp.Repository;
-using System;
 
 namespace MovieRentApp.MVVM.ViewModels;
 

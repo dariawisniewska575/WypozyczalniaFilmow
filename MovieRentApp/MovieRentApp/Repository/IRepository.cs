@@ -6,6 +6,7 @@ namespace MovieRentApp.Repository;
 
 public interface IRepository
 {
+    Task<Movie> AddMovieAsync(Movie newMovie);
     Task<IEnumerable<Movie>> GetMoviesAsync();
-    Task RemoveMovie(int movieId);
+    Task RemoveMovieAsync(int movieId);
 }

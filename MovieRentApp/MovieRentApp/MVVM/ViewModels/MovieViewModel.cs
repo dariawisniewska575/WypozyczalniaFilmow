@@ -9,8 +9,9 @@ namespace MovieRentApp.MVVM.ViewModels;
 
 public class MovieViewModel : ObservableObject
 {
+    private readonly IRepository _repository;
+
     private ObservableCollection<Movie>? _movies;
-    protected readonly IRepository _repository;
     public ObservableCollection<Movie> Movies
     {
         get { return _movies; }
@@ -18,6 +19,28 @@ public class MovieViewModel : ObservableObject
         {
             _movies = value;
             OnPropertyChanged();
+        }
+    }
+
+    private bool _isEditOrDeleteButtonEnabled;
+    public bool IsEditOrDeleteButtonEnabled
+    {
+        get { return _isEditOrDeleteButtonEnabled; }
+        set
+        {
+            _isEditOrDeleteButtonEnabled = value;
+            OnPropertyChanged(nameof(IsEditOrDeleteButtonEnabled));
+        }
+    }
+
+    private Movie _selectedItem;
+    public Movie SelectedItem
+    {
+        get { return _selectedItem; }
+        set
+        {
+            _selectedItem = value;
+            IsEditOrDeleteButtonEnabled = _selectedItem != null;
         }
     }
 
@@ -33,7 +56,10 @@ public class MovieViewModel : ObservableObject
     }
 
     public void RemoveMovie(int movieId)
-        => Task.Run(() => _repository.RemoveMovie(movieId));
+        => Task.Run(() => _repository.RemoveMovieAsync(movieId));
+
+    public Movie AddMovie(Movie newMovie)
+        => Task.Run(() => _repository.AddMovieAsync(newMovie)).Result;
 
     private async Task LoadMoviesAsync()
     {
