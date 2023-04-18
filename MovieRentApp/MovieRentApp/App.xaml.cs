@@ -30,10 +30,10 @@ public partial class App : Application
                     options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"));
                 });
                 services.AddScoped<IRepository, Repository.Repository>();
-                services.AddTransient<MainViewModel>();
+                services.AddScoped<MainViewModel>();
                 services.AddTransient<MainWindow>();
-                services.AddTransient<MovieViewModel>();
-                services.AddTransient<MovieView>();
+                services.AddScoped<MovieViewModel>();
+                services.AddScoped<MovieView>();
             })
             .Build();
     }
