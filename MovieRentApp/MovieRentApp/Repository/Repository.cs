@@ -23,6 +23,20 @@ public class Repository : IRepository
         return newMovie;
     }
 
+    public async Task EditMovieAsync(Movie movieToEdit)
+    {
+        var movie = await _dbContext.Movies.FirstOrDefaultAsync(m => m.Id == movieToEdit.Id);
+        if (movie is null)
+            return;
+        
+        movie.Title = movieToEdit.Title;
+        movie.Category = movieToEdit.Category;
+        movie.ReleaseYear = movieToEdit.ReleaseYear;
+        movie.Description = movieToEdit.Description;
+
+        await _dbContext.SaveChangesAsync();
+    }
+
     public async Task<IEnumerable<Movie>> GetMoviesAsync()
         => await _dbContext.Movies.ToListAsync();
 

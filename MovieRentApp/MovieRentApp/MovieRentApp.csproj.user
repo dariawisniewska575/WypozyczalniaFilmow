@@ -7,7 +7,10 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Modals\MovieFormModal.xaml.cs">
+    <Compile Update="Modals\AddOrEditMovieModal.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Modals\WarningMessageBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="MVVM\Views\ClientView.xaml.cs">
@@ -21,7 +24,10 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Modals\MovieFormModal.xaml">
+    <Page Update="Modals\AddOrEditMovieModal.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Modals\WarningMessageBox.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\ClientView.xaml">

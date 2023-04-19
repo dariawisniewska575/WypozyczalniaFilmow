@@ -61,6 +61,9 @@ public class MovieViewModel : ObservableObject
     public Movie AddMovie(Movie newMovie)
         => Task.Run(() => _repository.AddMovieAsync(newMovie)).Result;
 
+    public void EditMovie(Movie movieToEdit)
+        => Task.Run(() => _repository.EditMovieAsync(movieToEdit));
+
     private async Task LoadMoviesAsync()
     {
         var movies = await _repository.GetMoviesAsync();
