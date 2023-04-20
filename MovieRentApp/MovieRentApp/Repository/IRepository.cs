@@ -9,4 +9,5 @@ public interface IRepository
     Task EditEntityAsync<TEntity>(TEntity entity) where TEntity : class;
     Task DeleteEntityAsync<TEntity>(TEntity entity) where TEntity : class;
     Task<IEnumerable<TEntity>> GetEntitiesAsync<TEntity>() where TEntity : class;
+    IEnumerable<TEntity> GetEntities<TEntity>() where TEntity : class;
 }

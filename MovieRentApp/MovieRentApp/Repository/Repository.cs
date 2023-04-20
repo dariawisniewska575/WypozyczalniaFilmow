@@ -2,6 +2,7 @@
 using MovieRentApp.Context;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MovieRentApp.Repository;
@@ -37,5 +38,10 @@ public class Repository : IRepository
     public async Task<IEnumerable<TEntity>> GetEntitiesAsync<TEntity>() where TEntity : class
     {
         return await _dbContext.Set<TEntity>().ToListAsync();
+    }
+
+    public IEnumerable<TEntity> GetEntities<TEntity>() where TEntity : class
+    {
+        return _dbContext.Set<TEntity>().ToList();
     }
 }

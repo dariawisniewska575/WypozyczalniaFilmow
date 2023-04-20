@@ -1,5 +1,6 @@
 ﻿using MovieRentApp.Core;
 using MovieRentApp.Repository;
+using System.Threading.Tasks;
 
 namespace MovieRentApp.MVVM.ViewModels;
 
@@ -30,8 +31,8 @@ public class MainViewModel : ObservableObject
     public MainViewModel(IRepository repository)
     {
         MovieViewModel = new MovieViewModel(repository);
-        ClientsViewModel = new ClientViewModel();
-		CurrentView = MovieViewModel;
+        ClientsViewModel = new ClientViewModel(repository);
+        CurrentView = MovieViewModel;
 
 		MovieViewCommand = new RelayCommand(o =>
 		{

@@ -6,10 +6,11 @@
              xmlns:local="clr-namespace:MovieRentApp.MVVM.Views" 
              xmlns:viewmodels="clr-namespace:MovieRentApp.MVVM.ViewModels" 
              xmlns:converters="clr-namespace:MovieRentApp.Converters"
-             d:DataContext="{d:DesignInstance Type=viewmodels:MovieViewModel, IsDesignTimeCreatable=True}"
+             d:DataContext="{d:DesignInstance Type=viewmodels:MovieViewModel}"
              mc:Ignorable="d"
              d:DesignHeight="450" 
              d:DesignWidth="800">
+    
     <UserControl.Resources>
         <converters:BoolToYesNoConverter x:Key="BoolToYesNoConverter" />
         <converters:EnumValueConverter x:Key="EnumValueConverter" />

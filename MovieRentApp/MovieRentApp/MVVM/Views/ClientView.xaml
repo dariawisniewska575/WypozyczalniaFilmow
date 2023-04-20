@@ -4,10 +4,132 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MovieRentApp.MVVM.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
-             Background="black">
+             xmlns:viewmodels="clr-namespace:MovieRentApp.MVVM.ViewModels" 
+             xmlns:converters="clr-namespace:MovieRentApp.Converters"
+             d:DataContext="{d:DesignInstance Type=viewmodels:ClientViewModel}"
+             mc:Ignorable="d"
+             d:DesignHeight="450" 
+             d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <converters:BoolToYesNoConverter x:Key="BoolToYesNoConverter" />
+        <converters:EnumValueConverter x:Key="EnumValueConverter" />
+        <Style TargetType="{x:Type TextBlock}" x:Key="FormatCellText">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </UserControl.Resources>
+
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <DataGrid Background="{x:Null}"
+                  Grid.Row="0"
+                  x:Name="MovieDataGrid"
+                  GridLinesVisibility="None" 
+                  Foreground="White"
+                  IsReadOnly="True"
+                  SelectedItem="{Binding SelectedItem}" 
+                  ItemsSource="{Binding Clients}"
+                  BorderThickness="0" 
+                  BorderBrush="Transparent"
+                  RowHeight="60"
+                  Margin="15,0,0,0"
+                  SelectionMode="Single"
+                  HeadersVisibility="Column"
+                  CanUserResizeColumns="False"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Margin" Value="0,0,0,10" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#333333"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#333333"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="BorderBrush" Value="{x:Null}" />
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="Padding" Value="5,0,5,0" />
+                </Style>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="BorderBrush" Value="{x:Null}" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="Padding" Value="10" />
+                    <Setter Property="FontSize" Value="16"/>
+                    <Setter Property="ContentTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" />
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Cursor" Value="Hand" />
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id"  Binding="{Binding Id}" Width="65" ElementStyle="{StaticResource FormatCellText}"/>
+                <DataGridTextColumn Header="Imie" Binding="{Binding FirstName}" ElementStyle="{StaticResource FormatCellText}" Width="200" />
+                <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" ElementStyle="{StaticResource FormatCellText}" Width="200" />
+                <DataGridTextColumn Header="Wiek" Binding="{Binding Age}" ElementStyle="{StaticResource FormatCellText}" Width="200" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Content="Usuń" 
+                Grid.Row="1" 
+                Click="DeleteButton_Click"
+                Background="#FF3333"
+                Padding="10"
+                Margin="0,0,30,8"
+                Width="100"
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Bottom"
+                BorderBrush="Transparent"
+                IsEnabled="{Binding IsEditOrDeleteButtonEnabled}"
+                Style="{StaticResource DisabledButtonTheme}">
+        </Button>
+
+        <Button Content="Edytuj" 
+                Grid.Row="1" 
+                Click="EditButton_Click"
+                Background="#CC0000"
+                Padding="10"
+                Margin="0,0,150,8"
+                Width="100"
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Bottom"
+                BorderBrush="Transparent"
+                IsEnabled="{Binding IsEditOrDeleteButtonEnabled}"
+                Style="{StaticResource DisabledButtonTheme}">
+        </Button>
+
+        <Button Content="Dodaj" 
+                Grid.Row="1" 
+                Click="AddButton_Click"
+                Background="#339900"
+                Padding="10"
+                Margin="0,0,270,8"
+                Width="100"
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Bottom"
+                BorderBrush="Transparent"
+                Style="{StaticResource DisabledButtonTheme}">
+        </Button>
+
     </Grid>
 </UserControl>

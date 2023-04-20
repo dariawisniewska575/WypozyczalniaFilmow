@@ -22,7 +22,6 @@ namespace MovieRentApp.MVVM.Views
             if (MovieDataGrid.SelectedItem == null || MovieDataGrid.SelectedItem is not Movie selectedRow) 
                 return;
             var vm = (MovieViewModel)DataContext;
-            var primaryKey = selectedRow.Id;
             vm.RemoveMovie(selectedRow);
             vm.Movies.Remove(selectedRow);
         }

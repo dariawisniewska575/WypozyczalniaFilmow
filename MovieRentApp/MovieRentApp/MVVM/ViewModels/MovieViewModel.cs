@@ -52,7 +52,7 @@ public class MovieViewModel : ObservableObject
     public MovieViewModel(IRepository repository)
     {
         _repository = repository ?? throw new ArgumentNullException(nameof(repository));
-        Task.Run(() => LoadMoviesAsync());
+        LoadMovies();
     }
 
     public void RemoveMovie(Movie movie)
@@ -64,9 +64,15 @@ public class MovieViewModel : ObservableObject
     public void EditMovie(Movie movieToEdit)
         => Task.Run(() => _repository.EditEntityAsync(movieToEdit));
 
-    private async Task LoadMoviesAsync()
+    public async Task LoadMoviesAsync()
     {
         var movies = await _repository.GetEntitiesAsync<Movie>();
+        Movies = new ObservableCollection<Movie>(movies);
+    }
+
+    private void LoadMovies()
+    {
+        var movies = _repository.GetEntities<Movie>();
         Movies = new ObservableCollection<Movie>(movies);
     }
 }

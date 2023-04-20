@@ -34,6 +34,8 @@ public partial class App : Application
                 services.AddTransient<MainWindow>();
                 services.AddScoped<MovieViewModel>();
                 services.AddScoped<MovieView>();
+                services.AddScoped<ClientViewModel>();
+                services.AddScoped<ClientView>();
             })
             .Build();
     }
