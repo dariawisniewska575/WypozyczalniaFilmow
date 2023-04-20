@@ -19,7 +19,8 @@ public class Movie : ICloneable
     public object Clone()
     {
         return new Movie 
-        { 
+        {
+            Id = Id,
             Title = Title, 
             ReleaseYear = ReleaseYear, 
             Description = Description, 

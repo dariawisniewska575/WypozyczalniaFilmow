@@ -24,7 +24,7 @@ namespace MovieRentApp.Modals
         {
             if (movie is not null)
             {
-                Movie = (Movie) movie.Clone();
+                Movie = (Movie)movie.Clone();
                 return true;
             }
             return false;
@@ -63,8 +63,7 @@ namespace MovieRentApp.Modals
                     savedMovie.IsAvaiable = Movie.IsAvaiable;
                 }
 
-                
-
+                Movie = (Movie)savedMovie.Clone();
                 DialogResult = true;
                 Close();
             }

@@ -31,7 +31,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="MovieRent"
+            <TextBlock Text="Movie Rent"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
                        Foreground="White"
