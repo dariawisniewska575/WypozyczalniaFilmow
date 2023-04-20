@@ -24,7 +24,7 @@ namespace MovieRentApp.Modals
         {
             if (movie is not null)
             {
-                Movie = movie;
+                Movie = (Movie) movie.Clone();
                 return true;
             }
             return false;
@@ -48,23 +48,22 @@ namespace MovieRentApp.Modals
         {
             if (ValidateForm())
             {
+                var savedMovie = new Movie
+                {
+                    Title = txtTitle.Text,
+                    ReleaseYear = int.Parse(txtReleaseYear.Text),
+                    Description = txtDescription.Text,
+                    Category = (Category)cmbCategory.SelectedItem,
+                    IsAvaiable = true
+                };
+
                 if (Movie != null)
                 {
-                    Movie.Title = txtTitle.Text;
-                    Movie.ReleaseYear = int.Parse(txtReleaseYear.Text);
-                    Movie.Description = txtDescription.Text;
-                    Movie.Category = (Category)cmbCategory.SelectedItem;
-                }else
-                {
-                    Movie = new Movie
-                    {
-                        Title = txtTitle.Text,
-                        ReleaseYear = int.Parse(txtReleaseYear.Text),
-                        Description = txtDescription.Text,
-                        Category = (Category)cmbCategory.SelectedItem,
-                        IsAvaiable = true
-                    };
+                    savedMovie.Id = Movie.Id;
+                    savedMovie.IsAvaiable = Movie.IsAvaiable;
                 }
+
+                
 
                 DialogResult = true;
                 Close();

@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace MovieRentApp.Models;
 
-public class Movie
+public class Movie : ICloneable
 {
     [Key]
     public int Id { get; set; }
@@ -14,4 +15,16 @@ public class Movie
     public Category Category { get; set; }
 
     public virtual IEnumerable<Rental> Clients { get; set; }
+
+    public object Clone()
+    {
+        return new Movie 
+        { 
+            Title = Title, 
+            ReleaseYear = ReleaseYear, 
+            Description = Description, 
+            IsAvaiable = IsAvaiable, 
+            Category = Category 
+        };
+    }
 }
