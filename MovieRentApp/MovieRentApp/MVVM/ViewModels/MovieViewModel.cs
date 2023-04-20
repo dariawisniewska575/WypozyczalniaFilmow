@@ -55,18 +55,18 @@ public class MovieViewModel : ObservableObject
         Task.Run(() => LoadMoviesAsync());
     }
 
-    public void RemoveMovie(int movieId)
-        => Task.Run(() => _repository.RemoveMovieAsync(movieId));
+    public void RemoveMovie(Movie movie)
+        => Task.Run(() => _repository.DeleteEntityAsync(movie));
 
     public Movie AddMovie(Movie newMovie)
-        => Task.Run(() => _repository.AddMovieAsync(newMovie)).Result;
+        => Task.Run(() => _repository.AddEntityAsync(newMovie)).Result;
 
     public void EditMovie(Movie movieToEdit)
-        => Task.Run(() => _repository.EditMovieAsync(movieToEdit));
+        => Task.Run(() => _repository.EditEntityAsync(movieToEdit));
 
     private async Task LoadMoviesAsync()
     {
-        var movies = await _repository.GetMoviesAsync();
+        var movies = await _repository.GetEntitiesAsync<Movie>();
         Movies = new ObservableCollection<Movie>(movies);
     }
 }

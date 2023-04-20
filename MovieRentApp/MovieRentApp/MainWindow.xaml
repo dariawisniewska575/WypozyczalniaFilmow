@@ -38,7 +38,7 @@
                        FontSize="22"
                        Margin="20,0,0,0"/>
 
-            <StackPanel Grid.Row="1">
+            <StackPanel Grid.Row="1" Margin="0,8,0,0">
                 <RadioButton Content="Filmy"
                              Height="50"
                              Foreground="White"

@@ -23,7 +23,7 @@ namespace MovieRentApp.MVVM.Views
                 return;
             var vm = (MovieViewModel)DataContext;
             var primaryKey = selectedRow.Id;
-            vm.RemoveMovie(primaryKey);
+            vm.RemoveMovie(selectedRow);
             vm.Movies.Remove(selectedRow);
         }
 
@@ -61,11 +61,6 @@ namespace MovieRentApp.MVVM.Views
                 var newMovie = vm.AddMovie(addMovieDialog.Movie);
                 vm.Movies.Add(newMovie);
             }
-        }
-
-        private void MovieDataGrid_LostFocus(object sender, RoutedEventArgs e)
-        {
-            MovieDataGrid.SelectedItem = null;
         }
     }
 }

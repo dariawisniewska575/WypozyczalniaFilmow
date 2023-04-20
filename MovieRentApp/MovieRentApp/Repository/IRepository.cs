@@ -1,13 +1,12 @@
-﻿using MovieRentApp.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MovieRentApp.Repository;
 
 public interface IRepository
 {
-    Task<Movie> AddMovieAsync(Movie newMovie);
-    Task EditMovieAsync(Movie movieToEdit);
-    Task<IEnumerable<Movie>> GetMoviesAsync();
-    Task RemoveMovieAsync(int movieId);
+    Task<TEntity> AddEntityAsync<TEntity>(TEntity entity) where TEntity : class;
+    Task EditEntityAsync<TEntity>(TEntity entity) where TEntity : class;
+    Task DeleteEntityAsync<TEntity>(TEntity entity) where TEntity : class;
+    Task<IEnumerable<TEntity>> GetEntitiesAsync<TEntity>() where TEntity : class;
 }

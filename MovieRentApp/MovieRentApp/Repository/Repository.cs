@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MovieRentApp.Context;
-using MovieRentApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -16,35 +15,27 @@ public class Repository : IRepository
         _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
     }
 
-    public async Task<Movie> AddMovieAsync(Movie newMovie)
+    public async Task<TEntity> AddEntityAsync<TEntity>(TEntity entity) where TEntity : class
     {
-        await _dbContext.Movies.AddAsync(newMovie);
+        await _dbContext.Set<TEntity>().AddAsync(entity);
         await _dbContext.SaveChangesAsync();
-        return newMovie;
+        return entity;
     }
 
-    public async Task EditMovieAsync(Movie movieToEdit)
+    public async Task EditEntityAsync<TEntity>(TEntity entity) where TEntity : class
     {
-        var movie = await _dbContext.Movies.FirstOrDefaultAsync(m => m.Id == movieToEdit.Id);
-        if (movie is null)
-            return;
-        
-        movie.Title = movieToEdit.Title;
-        movie.Category = movieToEdit.Category;
-        movie.ReleaseYear = movieToEdit.ReleaseYear;
-        movie.Description = movieToEdit.Description;
-
+        _dbContext.Entry(entity).State = EntityState.Modified;
         await _dbContext.SaveChangesAsync();
     }
 
-    public async Task<IEnumerable<Movie>> GetMoviesAsync()
-        => await _dbContext.Movies.ToListAsync();
-
-    public async Task RemoveMovieAsync(int movieId)
+    public async Task DeleteEntityAsync<TEntity>(TEntity entity) where TEntity : class
     {
-        var movie = await _dbContext.Movies.FirstOrDefaultAsync(m => m.Id == movieId);
-        if (movie is null) return;
-        _dbContext.Movies.Remove(movie);
+        _dbContext.Set<TEntity>().Remove(entity);
         await _dbContext.SaveChangesAsync();
+    }
+
+    public async Task<IEnumerable<TEntity>> GetEntitiesAsync<TEntity>() where TEntity : class
+    {
+        return await _dbContext.Set<TEntity>().ToListAsync();
     }
 }
