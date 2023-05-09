@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace MovieRentApp.Models;
+namespace MovieRentApp.MVVM.Models;
 
 public class Client : ICloneable
 {
@@ -16,7 +16,7 @@ public class Client : ICloneable
 
     public object Clone()
     {
-        return new Client 
+        return new Client
         {
             Id = Id,
             FirstName = FirstName,

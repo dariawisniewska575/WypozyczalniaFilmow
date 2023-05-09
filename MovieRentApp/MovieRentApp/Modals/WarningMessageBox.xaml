@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MovieRentApp.Modals"
         mc:Ignorable="d"
         Title="WarningMessageBox" Height="100" Width="300"
         WindowStyle="None"
@@ -14,15 +13,20 @@
 
     <Border Background="#282434"
             CornerRadius="20"
-            MouseLeftButtonDown="BorderMouseLeftButtonDown">
+            MouseLeftButtonDown="BorderMouseLeftButtonDown"
+            Width="250">
         <StackPanel>
             <TextBlock HorizontalAlignment="Center" 
-                                   FontSize="20"
-                                   Foreground="White"
-                                   FontWeight="Bold"
-                                   Text="Wypełnij wszystkie pola!" 
-                                   Margin="0,10,0,0"/>
-            <StackPanel HorizontalAlignment="Center" Margin="20,10,20,20">
+                       TextAlignment="Center"
+                       FontSize="20"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       Margin="0,0,0,0">
+                Wypełnij poprawnie 
+                <LineBreak/>
+                wszystkie pola!
+            </TextBlock>
+            <StackPanel HorizontalAlignment="Center" Margin="20,0,20,20">
                 <Button Width="50" Background="#43A047" Content="OK" Style="{StaticResource DisabledButtonTheme}" Click="OkButton_Click" Margin="5"/>
             </StackPanel>
         </StackPanel>

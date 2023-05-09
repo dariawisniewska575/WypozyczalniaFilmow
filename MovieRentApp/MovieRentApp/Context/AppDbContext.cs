@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MovieRentApp.Models;
+using MovieRentApp.MVVM.Models;
 
 namespace MovieRentApp.Context;
 

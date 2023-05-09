@@ -1,5 +1,5 @@
 ﻿using MovieRentApp.Core;
-using MovieRentApp.Models;
+using MovieRentApp.MVVM.Models;
 using MovieRentApp.Repository;
 using System;
 using System.Collections.ObjectModel;

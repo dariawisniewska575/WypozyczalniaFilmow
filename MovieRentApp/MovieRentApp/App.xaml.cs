@@ -36,6 +36,9 @@ public partial class App : Application
                 services.AddScoped<MovieView>();
                 services.AddScoped<ClientViewModel>();
                 services.AddScoped<ClientView>();
+                services.AddScoped<RentalsViewModel>();
+                services.AddScoped<RentalsView>();
+
             })
             .Build();
     }
@@ -43,7 +46,6 @@ public partial class App : Application
     protected override async void OnStartup(StartupEventArgs e)
     {
         await AppHost!.StartAsync();
-
         var startupForm = AppHost.Services.GetRequiredService<MainWindow>();
         startupForm.DataContext = AppHost.Services.GetRequiredService<MainViewModel>();
         startupForm.Show();

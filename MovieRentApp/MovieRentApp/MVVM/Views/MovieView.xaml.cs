@@ -1,5 +1,5 @@
 ﻿using MovieRentApp.Modals;
-using MovieRentApp.Models;
+using MovieRentApp.MVVM.Models;
 using MovieRentApp.MVVM.ViewModels;
 using System.Runtime.CompilerServices;
 using System.Windows;

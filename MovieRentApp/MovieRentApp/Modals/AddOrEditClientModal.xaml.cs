@@ -1,4 +1,4 @@
-﻿using MovieRentApp.Models;
+﻿using MovieRentApp.MVVM.Models;
 using System.Windows;
 using System.Windows.Input;
 
@@ -72,7 +72,8 @@ namespace MovieRentApp.Modals
         {
             return !string.IsNullOrEmpty(txtFirstName.Text)
                 && !string.IsNullOrEmpty(txtLastName.Text)
-                && !string.IsNullOrEmpty(txtAge.Text);
+                && !string.IsNullOrEmpty(txtAge.Text)
+                && txtAge.Text.Length <= 2;
         }
 
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)

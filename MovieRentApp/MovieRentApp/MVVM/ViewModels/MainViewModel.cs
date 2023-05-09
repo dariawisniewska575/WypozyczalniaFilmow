@@ -8,8 +8,10 @@ public class MainViewModel : ObservableObject
 {
     public RelayCommand MovieViewCommand { get; set; }
     public RelayCommand ClientsViewCommand { get; set; }
+    public RelayCommand RentalsViewCommand { get; set; }
     public MovieViewModel MovieViewModel { get; set; }
     public ClientViewModel ClientsViewModel { get; set; }
+    public RentalsViewModel AllRentalsViewModel { get; set; }
 
     private object? _currentView;
 
@@ -32,6 +34,8 @@ public class MainViewModel : ObservableObject
     {
         MovieViewModel = new MovieViewModel(repository);
         ClientsViewModel = new ClientViewModel(repository);
+        AllRentalsViewModel = new RentalsViewModel(repository);
+
         CurrentView = MovieViewModel;
 
 		MovieViewCommand = new RelayCommand(o =>
@@ -43,5 +47,10 @@ public class MainViewModel : ObservableObject
 		{
 			CurrentView = ClientsViewModel;
 		});
+
+        RentalsViewCommand = new RelayCommand(o =>
+        {
+            CurrentView = AllRentalsViewModel;
+        });
     }
 }

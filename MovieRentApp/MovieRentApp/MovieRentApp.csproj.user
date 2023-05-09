@@ -13,6 +13,9 @@
     <Compile Update="Modals\AddOrEditMovieModal.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Modals\AddRentalModal.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Modals\WarningMessageBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -20,6 +23,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="MVVM\Views\MovieView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\Views\RentalsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -33,6 +39,9 @@
     <Page Update="Modals\AddOrEditMovieModal.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Modals\AddRentalModal.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Modals\WarningMessageBox.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -40,6 +49,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\MovieView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\Views\RentalsView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\CloseButtonTheme.xaml">

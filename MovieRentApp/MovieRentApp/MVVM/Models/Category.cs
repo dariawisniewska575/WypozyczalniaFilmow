@@ -1,4 +1,4 @@
-﻿namespace MovieRentApp.Models;
+﻿namespace MovieRentApp.MVVM.Models;
 
 public enum Category
 {

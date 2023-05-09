@@ -1,4 +1,4 @@
-﻿using MovieRentApp.Models;
+﻿using MovieRentApp.MVVM.Models;
 using System;
 using System.Windows;
 using System.Windows.Input;

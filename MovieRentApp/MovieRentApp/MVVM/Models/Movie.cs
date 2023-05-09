@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace MovieRentApp.Models;
+namespace MovieRentApp.MVVM.Models;
 
 public class Movie : ICloneable
 {
@@ -18,14 +18,14 @@ public class Movie : ICloneable
 
     public object Clone()
     {
-        return new Movie 
+        return new Movie
         {
             Id = Id,
-            Title = Title, 
-            ReleaseYear = ReleaseYear, 
-            Description = Description, 
-            IsAvaiable = IsAvaiable, 
-            Category = Category 
+            Title = Title,
+            ReleaseYear = ReleaseYear,
+            Description = Description,
+            IsAvaiable = IsAvaiable,
+            Category = Category
         };
     }
 }
